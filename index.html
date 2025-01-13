@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>吉林大学</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: black;
+        }
+        video {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <video id="video" muted>
+        <source src="genshin.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <audio id="audio">
+        <source src="genshin.MP3" type="audio/mpeg">
+        Your browser does not support the audio tag.
+    </audio>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var video = document.getElementById("video");
+            var audio = document.getElementById("audio");
+            // Request full screen
+            function requestFullScreen(element) {
+                if (element.requestFullscreen) {
+                    element.requestFullscreen();
+                } else if (element.mozRequestFullScreen) { // Firefox
+                    element.mozRequestFullScreen();
+                } else if (element.webkitRequestFullscreen) { // Chrome, Safari and Opera
+                    element.webkitRequestFullscreen();
+                } else if (element.msRequestFullscreen) { // IE/Edge
+                    element.msRequestFullscreen();
+                }
+            }
+
+            requestFullScreen(video);
+
+            // Listen for video end event
+            video.addEventListener('ended', function() {
+                // Redirect to another website
+                window.location.href = "https://ys.mihoyo.com";
+            });
+
+            // Play the video
+            video.play();
+            audio.play();
+        });
+    </script>
+</body>
+</html>
